@@ -1,0 +1,62 @@
+# CONCEITOS
+
+Virtualização: Máquinas virtuais simulam drivers de outros sistemas para serem carregados em outro sistema operacional;
+
+Docker
+*Diferente de virtualização;
+*Classificado como isolamento de processos; 
+
+Imagem: Conjunto minímo de bibliotecas e ferramentas usadas no software;
+
+Container: Ambiente isolado com todas as ferramentas necessárias para a execução do software desenvolvido
+
+# INICIALIZANDO
+
+sudo apt updated
+sudo snap install docker
+docker run hello-world
+
+# EXEMPLOS
+docker pull ubuntu
+docker pull python
+
+# COMANDOS
+
+docker images --> LISTA AS IMAGENS
+docker ps ---> LISTA CONTAINERS RODANDO
+
+docker run -it ubuntu /bin/bash -- RODA SHELL
+cat /etc/issue  ---> MOSTRAR VERSAO DO CONTAINER
+
+-it (parametro que mostra que é interativo, ou seja depende de comando no terminal) python( imagem) python3 (comando da imagem que vai ser executado)
+
+docker run -it python python3 
+
+docker run -v $(pwd):/src python python3 /src/hello.py  --> EXECUTANDO ARQUIVO PYTHON COM A IMAGEM DO DOCKER NO CONTAINER
+
+docker run -it -v $(pwd):/src maven /bin/bash ----> BAIXANDO IMAGEM MAVEM PARA RODAR O JAVA
+
+docker run -it -v $(pwd):/src -w /src/ maven java Hello -----> EXECUTANDO ARQUIVO JAVA COM A IMAGEM MAVEN DO DOCKER NO CONTAINER
+
+docker pull python:alpine ------> BAIXANDO IMAGEM ALPINE, OUTRA DISTRIBUIÇÃO LINUX
+
+docker pull python:slim
+
+docker run -v $(pwd):/src python:alpine python3 /src/hello.py  ----> RODANDO CONTAINER COM A DISTRIBUIÇÃO ALPINE
+
+docker build -t hello-quedas . ------> CRIANDO IMAGEM 
+
+docker run hello-quedas python3 /src/hello.py --------> RODANDO IMAGEM E O ARQUIVO HELLO.PY CONTIDO DENTRO DA IMAGEM
+
+docker run hello-quedas
+
+docker login (Criar token no DockerHUb)
+
+docker build -t pedromujica1/hello
+
+docker run -p 8080:80 httpd  ---> RODANDO SERVIDOR WEB
+
+
+
+
+
